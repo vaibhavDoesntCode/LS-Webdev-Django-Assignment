@@ -9,6 +9,7 @@
 <body>
     <div class="container mt-5">
         <form class="col-5 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"> 
+            {% csrf_token %}
             <h3>Register</h3>
             <hr>
             {% if messages %}
