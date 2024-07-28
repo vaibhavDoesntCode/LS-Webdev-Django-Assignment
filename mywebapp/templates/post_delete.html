@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Post</title>
+    <title>Delete Post</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,18 +17,19 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home_page' %}">Home</a>
             </li>
-            <li class="nav-item">
+           <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
           </ul>
         </div>
       </nav>
     <div class="container mt-4">
-        <h1>Create a New Post</h1>
-        <form method="post" enctype="multipart/form-data">
+        <h1>Delete Post</h1>
+        <p>Are you sure you want to delete the post titled "<strong>{{ post.title }}</strong>"?</p>
+        <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'post_list' %}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </body>

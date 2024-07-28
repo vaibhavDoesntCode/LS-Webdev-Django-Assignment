@@ -100,3 +100,11 @@ def post_create(request):
     else:
         form = PostForm()
     return render(request, 'post_create.html', {'form': form})
+
+@login_required
+def post_delete(request, post_id):
+    post = get_object_or_404(Post, id=post_id, user=request.user)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_list')
+    return render(request, 'post_delete.html', {'post': post})
